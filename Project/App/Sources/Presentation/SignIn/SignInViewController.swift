@@ -109,9 +109,23 @@ final class SignInViewController: BaseViewController<SignInReactor> {
     
     override func bindView(reactor: SignInReactor) {
         loginButton.rx.tap
-            .subscribe { _ in
-                self.loginButton.isEnabled = !self.loginButton.isEnabled
-                print(self.loginButton.isEnabled)
-            }.disposed(by: disposeBag)
+            .map { Reactor.Action.loginButtonDidTap }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        findIDButton.rx.tap
+            .map { Reactor.Action.idFindButtonDidTap }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        signUpButton.rx.tap
+            .map { Reactor.Action.signUpButtonDidTap }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        findPasswordButton.rx.tap
+            .map { Reactor.Action.passwordButtonDidTap }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
 }
