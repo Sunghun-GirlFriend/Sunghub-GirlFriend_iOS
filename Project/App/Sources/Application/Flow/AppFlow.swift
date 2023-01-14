@@ -34,6 +34,8 @@ final class AppFlow: Flow {
             return coordinateToSignIn()
         case .createIsRequired:
             return coordinateToCreate()
+        case .signupIsRequired:
+            return coordinateToSignup()
         case .mainTabbarIsRequired:
             return coordinateToMainTabbar()
         default:
@@ -52,6 +54,20 @@ extension AppFlow {
                 .contribute(
                     withNextPresentable: flow,
                     withNextStepper: OneStepper(withSingleStep: AppStep.signinIsRequired
+                )
+            )
+        )
+    }
+
+    private func coordinateToSignup() -> FlowContributors {
+        let flow = SignupFlow()
+        Flows.use(flow, when: .created) { [unowned self] root in
+            rootWindow.rootViewController = root
+        }
+        return .one(flowContributor:
+                .contribute(
+                    withNextPresentable: flow,
+                    withNextStepper: OneStepper(withSingleStep: AppStep.signupIsRequired
                 )
             )
         )

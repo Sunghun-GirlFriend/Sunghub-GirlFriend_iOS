@@ -30,5 +30,29 @@ final class ViewControllerAssembly: Assembly {
                 }
             }
             .buildNoReture
+        container
+            .builder
+            .with {
+                $0.register(SignupViewController.self) {
+                    SignupViewController(reactor: $0.resolve(SignupReactor.self)!)
+                }
+            }
+            .buildNoReture
+        container
+            .builder
+            .with {
+                $0.register(Signup2ViewController.self) {
+                    Signup2ViewController(reactor: $0.resolve(SignupReactor.self)!)
+                }
+            }
+            .buildNoReture
+        container
+            .builder
+            .with {
+                $0.register(Signup3ViewController.self) {
+                    Signup3ViewController(reactor: $0.resolve(SignupReactor.self)!)
+                }
+            }
+            .buildNoReture
     }
 }

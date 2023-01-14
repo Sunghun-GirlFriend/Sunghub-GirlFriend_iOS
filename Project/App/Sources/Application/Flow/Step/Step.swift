@@ -12,4 +12,7 @@ public enum AppStep: Step {
     case HomeIsRequired
     case RankIsRequired
     case MypageIsRequired
+
+    case signup2IsRequired
+    case signup3IsRequired
 }

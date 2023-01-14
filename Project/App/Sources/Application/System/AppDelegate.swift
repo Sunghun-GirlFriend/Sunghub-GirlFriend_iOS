@@ -42,4 +42,3 @@ private extension AppDelegate {
             .buildNoReture
     }
 }
-
