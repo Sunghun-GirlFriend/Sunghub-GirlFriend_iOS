@@ -28,6 +28,10 @@ final class AppFlow: Flow {
     func navigate(to step: RxFlow.Step) -> RxFlow.FlowContributors {
         guard let step = step as? AppStep else { return .none }
         switch step {
+        case .signinIsRequired:
+            return coordinateToSignIn()
+        case .mainIsRequired:
+            return coordinateToMain()
         default:
             return .none
         }
@@ -35,7 +39,7 @@ final class AppFlow: Flow {
 }
 
 extension AppFlow {
-    private func coordinateToOnBoarding() -> FlowContributors {
+    private func coordinateToSignIn() -> FlowContributors {
         let flow = SignInFlow()
         Flows.use(flow, when: .created) { [unowned self] root in
             rootWindow.rootViewController = root
