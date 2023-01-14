@@ -11,11 +11,21 @@ struct MainStepper: Stepper {
 }
 
 final class MainFlow: Flow {
+    enum TabIndex : Int{
+        case home = 0
+        case rank = 1
+        case mypage = 2
+    }
+    
     var root: Presentable {
         return rootViewController
     }
     let stepper: MainStepper = .init()
-    private let rootViewController = UINavigationController()
+    private let rootViewController = UITabBarController()
+        .builder
+        .with {
+            $0.tabBar.backgroundColor = .white
+        }.build
 
     // MARK: - Deinitalizer
     deinit {
@@ -26,15 +36,10 @@ final class MainFlow: Flow {
         guard let step = step as? AppStep else { return .none }
         switch step {
         case .mainIsRequired:
-            return coodrinatorToMain()
+            return .none
         default:
             return .none
         }
     }
 }
 
-extension MainFlow {
-    func coodrinatorToMain() -> FlowContributors {
-        return .none
-    }
-}

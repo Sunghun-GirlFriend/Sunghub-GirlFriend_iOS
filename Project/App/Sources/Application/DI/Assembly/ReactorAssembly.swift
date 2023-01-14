@@ -8,6 +8,9 @@ final class ReactorAssembly: Assembly {
                 $0.register(SignInReactor.self) { _ in
                     SignInReactor()
                 }
+                $0.register(MainReactor.self) { _ in
+                    MainReactor()
+                }
             }
             .buildNoReture
     }

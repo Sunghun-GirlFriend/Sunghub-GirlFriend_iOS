@@ -8,6 +8,9 @@ final class ViewControllerAssembly: Assembly {
                 $0.register(SignInViewController.self) {
                     SignInViewController(reactor: $0.resolve(SignInReactor.self)!)
                 }
+                $0.register(MainViewController.self) {
+                    MainViewController(reactor: $0.resolve(MainReactor.self)!)
+                }
             }
             .buildNoReture
     }
