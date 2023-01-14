@@ -11,30 +11,41 @@ final class SignInReactor: Reactor, Stepper {
 
     //MARK: - Reactor
     enum Action {
-        // actiom cases
+        case loginButtonDidTap
+        case idFindButtonDidTap
+        case signUpButtonDidTap
+        case passwordButtonDidTap
     }
-    
+
     enum Mutation {
         // mutation cases
     }
-    
+
     struct State {
         //state
     }
-    
+
     let initialState: State
-    
+
     init() {
         self.initialState = State()
     }
-
 }
 
 //MARK: - Mutate
 extension SignInReactor {
     func mutate(action: Action) -> Observable<Mutation> {
-        // switch action {
-        // }
+         switch action {
+         case .loginButtonDidTap:
+             steps.accept(AppStep.mainIsRequired)
+         case .idFindButtonDidTap:
+             return .empty()
+         case .signUpButtonDidTap:
+             return .empty()
+         case .passwordButtonDidTap:
+             return .empty()
+         }
+        return .empty()
     }
 }
 
@@ -42,8 +53,9 @@ extension SignInReactor {
 extension SignInReactor {
     func reduce(state: State, mutation: Mutation) -> State {
         var newState = state
-        // switch mutation {
-        // }
+         switch mutation {
+             
+         }
         return newState
     }
 }
