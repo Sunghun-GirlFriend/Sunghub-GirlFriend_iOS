@@ -8,9 +8,6 @@ final class SignupReactor: Reactor, Stepper {
 
     private let disposeBag: DisposeBag = .init()
     var steps: PublishRelay<Step> = .init()
-    
-    private let disposeBag: DisposeBag = .init()
-    var steps: PublishRelay<Step> = .init()
 
     enum Action {
         case completeButtonDidTap
