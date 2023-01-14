@@ -10,5 +10,13 @@ final class ReactorAssembly: Assembly {
                 }
             }
             .buildNoReture
+        container
+            .builder
+            .with {
+                $0.register(CreateReactor.self) { _ in
+                    CreateReactor()
+                }
+            }
+            .buildNoReture
     }
 }
