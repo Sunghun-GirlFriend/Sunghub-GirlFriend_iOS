@@ -2,7 +2,6 @@ import UIKit
 import RxRelay
 import RxSwift
 import RxFlow
-import BaseFeature
 
 struct AppStepper: Stepper {
     let steps: PublishRelay<Step> = .init()
@@ -27,11 +26,12 @@ final class AppFlow: Flow {
         print("\(type(of: self)) : \(#function)")
     }
     func navigate(to step: RxFlow.Step) -> RxFlow.FlowContributors {
-        guard let step = step as? FritzStep else { return .none }
+        guard let step = step as? AppStep else { return .none }
         switch step {
         default:
             return .none
         }
     }
 }
+
 extension AppFlow {}
