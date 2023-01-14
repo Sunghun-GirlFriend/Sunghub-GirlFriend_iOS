@@ -27,6 +27,7 @@ public extension GodsaeongAPI {
 
 public enum GodsaeongDomain: String {
     case auth
+    case quest
 }
 
 extension GodsaeongDomain {
