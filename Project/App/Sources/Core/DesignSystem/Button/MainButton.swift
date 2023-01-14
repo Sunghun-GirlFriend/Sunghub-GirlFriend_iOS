@@ -8,7 +8,13 @@ final class MainButton: UIButton {
             self.setTitle(newValue, for: .normal)
         }
     }
-        
+    
+    override var isEnabled: Bool {
+        didSet {
+            self.backgroundColor = isEnabled ? .ColorSystem.Color.main5.color : .ColorSystem.Color.main1.color
+        }
+    }
+    
     //MARK: - Initalizer
     init() {
         super.init(frame: .zero)
@@ -22,18 +28,12 @@ final class MainButton: UIButton {
     
     //MARK: - Method
     func setUI() {
+        self.isEnabled = false
+        self.backgroundColor = .ColorSystem.Color.main1.color
         self.layer.cornerRadius = 8
         self.clipsToBounds = true
         self.setTitleColor(.white, for: .normal)
         self.titleLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
         self.titleLabel?.textColor = UIColor.white
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        self.applyGradient(colors: [
-            UIColor.ColorSystem.Color.main5.color,
-            UIColor.ColorSystem.Color.main4.color.withAlphaComponent(0.6),
-        ])
     }
 }
