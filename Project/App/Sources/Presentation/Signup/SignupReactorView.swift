@@ -1,11 +1,3 @@
-//
-//  SignupReactorView.swift
-//  Godsang-iOS
-//
-//  Created by sunghun on 2023/01/14.
-//  Copyright © 2023 Sunghun-GirlFriend. All rights reserved.
-//
-
 import Foundation
 import ReactorKit
 import RxSwift
