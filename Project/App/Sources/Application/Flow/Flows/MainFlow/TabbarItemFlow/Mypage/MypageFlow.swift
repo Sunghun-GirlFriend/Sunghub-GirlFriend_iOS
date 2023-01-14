@@ -3,18 +3,18 @@ import RxSwift
 import RxRelay
 import RxFlow
 
-struct SignInStepper: Stepper {
-    var steps: PublishRelay<Step> = .init()
+struct MypageStepper: Stepper {
+    let steps: PublishRelay<Step> = .init()
     var initialStep: Step {
-        return AppStep.signinIsRequired
+        return AppStep.MypageIsRequired
     }
 }
 
-final class SignInFlow: Flow {
+final class MypageFlow: Flow {
     var root: Presentable {
         return rootViewController
     }
-    let stepper: SignInStepper = .init()
+    let stepper: MypageStepper = .init()
     private let rootViewController = UINavigationController()
 
     // MARK: - Deinitalizer
@@ -25,10 +25,8 @@ final class SignInFlow: Flow {
     func navigate(to step: Step) -> FlowContributors {
         guard let step = step as? AppStep else { return .none }
         switch step {
-        case .signinIsRequired:
-            return coodrinatorToSignIn()
-        case .signupIsRequired:
-            return navigateToSignUp()
+        case .MypageIsRequired:
+            return coordinateToMypage()
         case .popToRoot:
             return popToRoot()
         default:
@@ -37,25 +35,15 @@ final class SignInFlow: Flow {
     }
 }
 
-extension SignInFlow {
-    func coodrinatorToSignIn() -> FlowContributors {
-        let viewController = AppDelegate.container.resolve(SignInViewController.self)!
+private extension MypageFlow {
+    func coordinateToMypage() -> FlowContributors {
+        let viewController = AppDelegate.container.resolve(MyPageViewController.self)!
         self.rootViewController.setViewControllers([viewController], animated: true)
         return .one(flowContributor: .contribute(
             withNextPresentable: viewController,
             withNextStepper: viewController.reactor!)
         )
     }
-    
-    func navigateToSignUp() -> FlowContributors {
-        let viewController = AppDelegate.container.resolve(SignupViewController.self)!
-        self.rootViewController.pushViewController(viewController, animated: true)
-        return .one(flowContributor: .contribute(
-            withNextPresentable: viewController,
-            withNextStepper: viewController.reactor!)
-        )
-    }
-    
     func popToRoot() -> FlowContributors {
         self.rootViewController.popToRootViewController(animated: true)
         return .none
