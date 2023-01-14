@@ -4,7 +4,7 @@ import RxSwift
 import RxRelay
 import RxFlow
 
-final class MainReactor: Reactor , Stepper{
+final class HomeReactor: Reactor , Stepper{
     
     private let disposeBag: DisposeBag = .init()
     var steps: PublishRelay<Step> = .init()
@@ -31,7 +31,7 @@ final class MainReactor: Reactor , Stepper{
 }
 
 //MARK: - Mutate
-extension MainReactor {
+extension HomeReactor {
     func mutate(action: Action) -> Observable<Mutation> {
         // switch action {
         // }
@@ -39,7 +39,7 @@ extension MainReactor {
 }
 
 //MARK: - reduce
-extension MainReactor {
+extension HomeReactor {
     func reduce(state: State, mutation: Mutation) -> State {
         var newState = state
         // switch mutation {

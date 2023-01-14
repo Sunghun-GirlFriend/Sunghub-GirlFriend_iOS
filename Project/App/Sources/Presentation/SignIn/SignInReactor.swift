@@ -37,7 +37,7 @@ extension SignInReactor {
     func mutate(action: Action) -> Observable<Mutation> {
          switch action {
          case .loginButtonDidTap:
-             steps.accept(AppStep.mainIsRequired)
+             steps.accept(AppStep.mainTabbarIsRequired)
          case .idFindButtonDidTap:
              return .empty()
          case .signUpButtonDidTap:

@@ -2,7 +2,7 @@ import UIKit
 import ReactorKit
 import RxSwift
 
-final class MainViewController: BaseViewController<MainReactor> {
+final class HomeViewController: BaseViewController<HomeReactor> {
     //MARK: - Property
     private let icon = UIImageView().builder
         .image(UIImage(named: "Logo"))

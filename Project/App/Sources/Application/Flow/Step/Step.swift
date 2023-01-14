@@ -5,5 +5,10 @@ public enum AppStep: Step {
     
     case signinIsRequired
     case signupIsRequired
-    case mainIsRequired
+    case mainTabbarIsRequired
+    
+    //MARK: - Tabbar
+    case HomeIsRequired
+    case RankIsRequired
+    case MypageIsRequired
 }
