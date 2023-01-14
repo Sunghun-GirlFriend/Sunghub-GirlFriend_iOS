@@ -1,9 +1,15 @@
 import Foundation
 import ReactorKit
 import RxSwift
+import RxRelay
+import RxFlow
 
-class SignupReactor: Reactor {
+
+class SignupReactor: Reactor, Stepper {
     
+    private let disposeBag: DisposeBag = .init()
+    var steps: PublishRelay<Step> = .init()
+
     enum Action {
         // actiom cases
     }

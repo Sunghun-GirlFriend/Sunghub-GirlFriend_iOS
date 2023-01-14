@@ -19,8 +19,12 @@ final class SignInViewController: BaseViewController<SignInReactor> {
         .textColor(.black)
         .build
     
-    private let idTextField = UITextField().builder
-        .text("아이디를 입력해주세요.")
+    private let idTextField = GodsaengTextfield().builder
+        .placeholder("아이디를 입력해주세요.")
+        .build
+    
+    private let passTextField = GodsaengTextfield().builder
+        .placeholder("비밀번호를 입력해주세요.")
         .build
     
     private let loginButton = MainButton().builder
@@ -69,6 +73,7 @@ final class SignInViewController: BaseViewController<SignInReactor> {
             loginLabel,
             descriptionLabel,
             idTextField,
+            passTextField,
             loginButton,
             logoStackView
         )
@@ -89,8 +94,19 @@ final class SignInViewController: BaseViewController<SignInReactor> {
             $0.top.equalTo(loginLabel.snp.bottom).offset(8)
             $0.leading.equalTo(loginLabel)
         }
+        idTextField.snp.makeConstraints {
+            $0.top.equalTo(descriptionLabel.snp.bottom).offset(28)
+            $0.leading.right.equalToSuperview().inset(bounds.width/24.375)
+            $0.height.equalTo(48)
+        }
+        passTextField.snp.makeConstraints {
+            $0.top.equalTo(idTextField.snp.bottom).offset(18)
+            $0.leading.right.equalToSuperview().inset(bounds.width/24.375)
+            $0.height.equalTo(48)
+        }
+        
         loginButton.snp.makeConstraints {
-            $0.top.equalTo(descriptionLabel.snp.bottom).offset(38)
+            $0.top.equalTo(passTextField.snp.bottom).offset(38)
             $0.leading.right.equalToSuperview().inset(bounds.width/24.375)
             $0.height.equalTo(48)
         }
