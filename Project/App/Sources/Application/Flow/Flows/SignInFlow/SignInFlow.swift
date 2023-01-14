@@ -14,7 +14,7 @@ final class SignInFlow: Flow {
     var root: Presentable {
         return rootViewController
     }
-    let stepper: MainStepper = .init()
+    let stepper: SignInStepper = .init()
     private let rootViewController = UINavigationController()
 
     // MARK: - Deinitalizer
@@ -25,7 +25,7 @@ final class SignInFlow: Flow {
     func navigate(to step: Step) -> FlowContributors {
         guard let step = step as? AppStep else { return .none }
         switch step {
-        case .mainIsRequired:
+        case .signinIsRequired:
             return coodrinatorToSignIn()
         default:
             return .none

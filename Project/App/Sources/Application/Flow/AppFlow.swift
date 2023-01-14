@@ -6,7 +6,9 @@ import RxFlow
 struct AppStepper: Stepper {
     let steps: PublishRelay<Step> = .init()
     private let disposeBag = DisposeBag()
-    func readyToEmitSteps() {}
+    func readyToEmitSteps() {
+        steps.accept(AppStep.signinIsRequired)
+    }
 }
 
 final class AppFlow: Flow {
