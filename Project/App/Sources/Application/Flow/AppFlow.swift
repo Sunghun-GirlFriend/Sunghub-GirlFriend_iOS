@@ -34,4 +34,32 @@ final class AppFlow: Flow {
     }
 }
 
-extension AppFlow {}
+extension AppFlow {
+    private func coordinateToOnBoarding() -> FlowContributors {
+        let flow = SignInFlow()
+        Flows.use(flow, when: .created) { [unowned self] root in
+            rootWindow.rootViewController = root
+        }
+        return .one(flowContributor:
+                .contribute(
+                    withNextPresentable: flow,
+                    withNextStepper: OneStepper(withSingleStep: AppStep.signinIsRequired
+                )
+            )
+        )
+    }
+
+    private func coordinateToMain() -> FlowContributors {
+        let flow = MainFlow()
+        Flows.use(flow, when: .created) { [unowned self] root in
+            rootWindow.rootViewController = root
+        }
+        return .one(flowContributor:
+                .contribute(
+                    withNextPresentable: flow,
+                    withNextStepper: OneStepper(withSingleStep: AppStep.mainIsRequired
+                )
+            )
+        )
+    }
+}
