@@ -4,5 +4,5 @@ import RxSwift
 import SnapKit
 
 final class SignInViewController: BaseViewController<SignInReactor>{
-    
+    override func setUp() {}
 }
