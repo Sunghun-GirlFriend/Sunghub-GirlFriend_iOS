@@ -5,7 +5,7 @@ import SnapKit
 
 final class SignInViewController: BaseViewController<SignInReactor> {
     private let icon = UIImageView().builder
-        .image(UIImage(named: ""))
+        .image(UIImage(named: "Logo"))
         .build
     
     private let loginLabel = UILabel().builder
