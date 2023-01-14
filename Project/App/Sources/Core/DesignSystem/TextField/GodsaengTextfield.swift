@@ -2,27 +2,33 @@ import UIKit
 
 final class GodsaengTextfield: UITextField {
     //MARK: - property
-    enum GodsaengTextButtonStyle: String {
-        case close = "xmark.circle.fill"
-        case eye_open = "eye.fill"
-        case eye_close = "eye.slash.fill"
-    }
-    
-    let button = UIButton(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
 
+    let textPadding = UIEdgeInsets(
+        top: 10,
+        left: 20,
+        bottom: 10,
+        right: 20
+    )
+    
     //MARK: - initalizer
-    init(style: GodsaengTextButtonStyle) {
+    init() {
         super.init(frame: .zero)
-        self.button.setImage(UIImage(systemName: style.rawValue), for: .normal)
-        self.rightView = button
+        self.backgroundColor = .ColorSystem.Color.gray2.color
+        self.layer.cornerRadius = 8
     }
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
-extension GodsaengTextfield: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        backgroundColor = .red
+extension GodsaengTextfield {
+    override func textRect(forBounds bounds: CGRect) -> CGRect {
+        let rect = super.textRect(forBounds: bounds)
+        return rect.inset(by: textPadding)
+    }
+    
+    override func editingRect(forBounds bounds: CGRect) -> CGRect {
+        let rect = super.editingRect(forBounds: bounds)
+        return rect.inset(by: textPadding)
     }
 }

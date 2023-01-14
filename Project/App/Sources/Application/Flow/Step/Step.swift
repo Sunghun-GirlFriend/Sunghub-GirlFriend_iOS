@@ -2,6 +2,7 @@ import RxFlow
 
 public enum AppStep: Step {
     case dismiss
+    case popToRoot
     
     case signinIsRequired
     case signupIsRequired

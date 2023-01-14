@@ -27,6 +27,8 @@ final class MypageFlow: Flow {
         switch step {
         case .MypageIsRequired:
             return coordinateToMypage()
+        case .popToRoot:
+            return popToRoot()
         default:
             return .none
         }
@@ -41,5 +43,9 @@ private extension MypageFlow {
             withNextPresentable: viewController,
             withNextStepper: viewController.reactor!)
         )
+    }
+    func popToRoot() -> FlowContributors {
+        self.rootViewController.popToRootViewController(animated: true)
+        return .none
     }
 }

@@ -27,6 +27,10 @@ final class SignInFlow: Flow {
         switch step {
         case .signinIsRequired:
             return coodrinatorToSignIn()
+        case .signupIsRequired:
+            return navigateToSignUp()
+        case .popToRoot:
+            return popToRoot()
         default:
             return .none
         }
@@ -42,5 +46,18 @@ extension SignInFlow {
             withNextStepper: viewController.reactor!)
         )
     }
+    
+    func navigateToSignUp() -> FlowContributors {
+        let viewController = AppDelegate.container.resolve(SignUpViewController.self)!
+        self.rootViewController.pushViewController(viewController, animated: true)
+        return .one(flowContributor: .contribute(
+            withNextPresentable: viewController,
+            withNextStepper: viewController.reactor!)
+        )
+    }
+    
+    func popToRoot() -> FlowContributors {
+        self.rootViewController.popToRootViewController(animated: true)
+        return .none
+    }
 }
-
