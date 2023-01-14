@@ -2,7 +2,6 @@ import UIKit
 
 final class GodsaengTextfield: UITextField {
     //MARK: - property
-
     let textPadding = UIEdgeInsets(
         top: 10,
         left: 20,

@@ -8,8 +8,8 @@ final class ReactorAssembly: Assembly {
                 $0.register(SignInReactor.self) { _ in
                     SignInReactor()
                 }
-                $0.register(SignUpReactor.self) { _ in
-                    SignUpReactor()
+                $0.register(SignupReactor.self) { _ in
+                    SignupReactor()
                 }
                 $0.register(HomeReactor.self) { _ in
                     HomeReactor()
