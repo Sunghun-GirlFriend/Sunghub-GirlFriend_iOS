@@ -1,7 +1,14 @@
 import UIKit
+import SwiftUI
 
-protocol GodSangColorable {
+protocol GodSaengColorable {
     var color: UIColor { get }
+}
+
+extension GodsaengIOSColors {
+    var suiColor: SwiftUI.Color {
+        return SwiftUI.Color(self.color)
+    }
 }
 
 public extension UIColor {
@@ -17,7 +24,7 @@ public extension UIColor {
     }
 }
 public extension UIColor.ColorSystem {
-    enum Color: GodSangColorable {
+    enum Color: GodSaengColorable {
         case main1
         case main2
         case main3
@@ -29,6 +36,16 @@ public extension UIColor.ColorSystem {
         case error
         case check
         case focus
+        case gray1
+        case gray2
+        case gray3
+        case gray4
+        case gray5
+        case gray6
+        case gray7
+        case gray8
+        case gray9
+        case background
     }
 }
 
@@ -37,27 +54,47 @@ public extension UIColor.ColorSystem.Color {
     var color: UIColor {
         switch self {
         case .main1:
-            return GodsangIOSAsset.Color.main1.color
+            return GodsaengIOSAsset.Color.main1.color
         case .main2:
-            return GodsangIOSAsset.Color.main2.color
+            return GodsaengIOSAsset.Color.main2.color
         case .main3:
-            return GodsangIOSAsset.Color.main3.color
+            return GodsaengIOSAsset.Color.main3.color
         case .main4:
-            return GodsangIOSAsset.Color.main4.color
+            return GodsaengIOSAsset.Color.main4.color
         case .main5:
-            return GodsangIOSAsset.Color.main5.color
+            return GodsaengIOSAsset.Color.main5.color
         case .sub1:
-            return GodsangIOSAsset.Color.sub1.color
+            return GodsaengIOSAsset.Color.sub1.color
         case .sub2:
-            return GodsangIOSAsset.Color.sub2.color
+            return GodsaengIOSAsset.Color.sub2.color
         case .sub3:
-            return GodsangIOSAsset.Color.sub3.color
+            return GodsaengIOSAsset.Color.sub3.color
         case .error:
-            return GodsangIOSAsset.Color.error.color
+            return GodsaengIOSAsset.Color.error.color
         case .check:
-            return GodsangIOSAsset.Color.check.color
+            return GodsaengIOSAsset.Color.check.color
         case .focus:
-            return GodsangIOSAsset.Color.focus.color
+            return GodsaengIOSAsset.Color.focus.color
+        case .gray1:
+            return GodsaengIOSAsset.Color.gray1.color
+        case .gray2:
+            return GodsaengIOSAsset.Color.gray2.color
+        case .gray3:
+            return GodsaengIOSAsset.Color.gray3.color
+        case .gray4:
+            return GodsaengIOSAsset.Color.gray4.color
+        case .gray5:
+            return GodsaengIOSAsset.Color.gray5.color
+        case .gray6:
+            return GodsaengIOSAsset.Color.gray6.color
+        case .gray7:
+            return GodsaengIOSAsset.Color.gray7.color
+        case .gray8:
+            return GodsaengIOSAsset.Color.gray8.color
+        case .gray9:
+            return GodsaengIOSAsset.Color.gray9.color
+        case .background:
+            return GodsaengIOSAsset.Color.background.color
         }
     }
 }
