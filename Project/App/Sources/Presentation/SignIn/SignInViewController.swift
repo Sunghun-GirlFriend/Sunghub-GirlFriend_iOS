@@ -23,8 +23,18 @@ final class SignInViewController: BaseViewController<SignInReactor> {
         .text("아이디를 입력해주세요.")
         .build
     
+    private let loginButton = MainButton().builder
+        .text("로그인")
+        .build
+    
     override func addView() {
-        view.addSubViews(icon, loginLabel, descriptionLabel, idTextField)
+        view.addSubViews(
+            icon,
+            loginLabel,
+            descriptionLabel,
+            idTextField,
+            loginButton
+        )
     }
     
     override func setLayout() {
@@ -32,17 +42,23 @@ final class SignInViewController: BaseViewController<SignInReactor> {
             $0.top.equalTo(view.safeArea.top)
             $0.height.equalTo(45.8)
             $0.width.equalTo(116)
-            $0.left.equalToSuperview().offset(bounds.width/24.375)
+            $0.leading.equalToSuperview().offset(bounds.width/24.375)
         }
         
         loginLabel.snp.makeConstraints {
             $0.top.equalTo(icon.snp.bottom).offset(28)
-            $0.left.equalToSuperview().offset(bounds.width/24.375)
+            $0.leading.equalToSuperview().offset(bounds.width/24.375)
         }
         
         descriptionLabel.snp.makeConstraints {
             $0.top.equalTo(loginLabel.snp.bottom).offset(8)
-            $0.left.equalTo(loginLabel)
+            $0.leading.equalTo(loginLabel)
+        }
+        
+        loginButton.snp.makeConstraints {
+            $0.top.equalTo(descriptionLabel.snp.bottom).offset(38)
+            $0.leading.right.equalToSuperview().inset(bounds.width/24.375)
+            $0.height.equalTo(48)
         }
     }
 }
