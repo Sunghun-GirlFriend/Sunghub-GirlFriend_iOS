@@ -140,7 +140,7 @@ final class HomeViewController: BaseViewController<HomeReactor> {
         
         questView.stopButton.addTarget(for: .touchUpInside) { _ in
             Dummy.shared.stoppingdata.append(
-                Dummy.DummyData(category: "독서", title: "객체지향", time: "2시간 15분 14초")
+                Dummy.DummyData(category: self.questView.categoryLabel.text!, title: self.questView.titleMissionLabel.text!, time: self.questView.timerLabel.text!)
             )
             self.stoppingTableView.reloadData()
             self.questView.isHidden = true
