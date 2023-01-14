@@ -1,8 +1,8 @@
 import ProjectDescription
 
 public enum Environment {
-    public static let appName: String =  "Sunghun-GirlFriend-iOS"
-    public static let targetName: String = "Sunghun-GirlFriend-iOS"
+    public static let appName: String =  "Godsang-iOS"
+    public static let targetName: String = "Godsang-iOS"
     public static let targetTestName: String = "\(targetName)Tests"
     public static let targetUITestName: String = "\(targetName)UITests"
     public static let targetScript: [TargetScript] = []
