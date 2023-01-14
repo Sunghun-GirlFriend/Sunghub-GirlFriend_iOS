@@ -48,7 +48,7 @@ extension SignInFlow {
     }
     
     func navigateToSignUp() -> FlowContributors {
-        let viewController = AppDelegate.container.resolve(SignUpViewController.self)!
+        let viewController = AppDelegate.container.resolve(SignupViewController.self)!
         self.rootViewController.pushViewController(viewController, animated: true)
         return .one(flowContributor: .contribute(
             withNextPresentable: viewController,

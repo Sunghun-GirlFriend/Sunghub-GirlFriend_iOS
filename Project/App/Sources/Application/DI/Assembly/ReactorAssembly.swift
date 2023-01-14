@@ -8,8 +8,8 @@ final class ReactorAssembly: Assembly {
                 $0.register(SignInReactor.self) { _ in
                     SignInReactor()
                 }
-                $0.register(SignUpReactor.self) { _ in
-                    SignUpReactor()
+                $0.register(SignupReactor.self) { _ in
+                    SignupReactor()
                 }
                 $0.register(HomeReactor.self) { _ in
                     HomeReactor()
@@ -19,6 +19,14 @@ final class ReactorAssembly: Assembly {
                 }
                 $0.register(MyPageReactor.self) { _ in
                     MyPageReactor()
+                }
+            }
+            .buildNoReture
+        container
+            .builder
+            .with {
+                $0.register(CreateReactor.self) { _ in
+                    CreateReactor()
                 }
             }
             .buildNoReture

@@ -4,46 +4,49 @@ import RxSwift
 import RxRelay
 import RxFlow
 
-final class SignUpReactor: Reactor, Stepper {
+final class CreateReactor: Reactor, Stepper {
     
     private let disposeBag: DisposeBag = .init()
     var steps: PublishRelay<Step> = .init()
 
     //MARK: - Reactor
     enum Action {
-        // actiom cases
+        case loginButtonDidTap
     }
-    
+
     enum Mutation {
         // mutation cases
     }
-    
+
     struct State {
         //state
     }
-    
+
     let initialState: State
-    
+
     init() {
         self.initialState = State()
     }
-
 }
 
 //MARK: - Mutate
-extension SignUpReactor {
+extension CreateReactor {
     func mutate(action: Action) -> Observable<Mutation> {
-        // switch action {
-        // }
+         switch action {
+         case .loginButtonDidTap:
+             steps.accept(AppStep.mainIsRequired)
+         }
+        return .empty()
     }
 }
 
 //MARK: - reduce
-extension SignUpReactor {
+extension CreateReactor {
     func reduce(state: State, mutation: Mutation) -> State {
         var newState = state
-        // switch mutation {
-        // }
+         switch mutation {
+             
+         }
         return newState
     }
 }

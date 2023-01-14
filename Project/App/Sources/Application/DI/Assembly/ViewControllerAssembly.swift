@@ -8,8 +8,8 @@ final class ViewControllerAssembly: Assembly {
                 $0.register(SignInViewController.self) {
                     SignInViewController(reactor: $0.resolve(SignInReactor.self)!)
                 }
-                $0.register(SignUpViewController.self) {
-                    SignUpViewController(reactor: $0.resolve(SignUpReactor.self)!)
+                $0.register(SignupViewController.self) {
+                    SignupViewController(reactor: $0.resolve(SignupReactor.self)!)
                 }
                 $0.register(HomeViewController.self) {
                     HomeViewController(reactor: $0.resolve(HomeReactor.self)!)
@@ -19,6 +19,14 @@ final class ViewControllerAssembly: Assembly {
                 }
                 $0.register(MyPageViewController.self) {
                     MyPageViewController(reactor: $0.resolve(MyPageReactor.self)!)
+                }
+            }
+            .buildNoReture
+        container
+            .builder
+            .with {
+                $0.register(CreateViewController.self) {
+                    CreateViewController(reactor: $0.resolve(CreateReactor.self)!)
                 }
             }
             .buildNoReture
