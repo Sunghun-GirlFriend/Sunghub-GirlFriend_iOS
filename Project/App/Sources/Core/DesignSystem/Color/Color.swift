@@ -1,7 +1,14 @@
 import UIKit
+import SwiftUI
 
 protocol GodSangColorable {
     var color: UIColor { get }
+}
+
+extension GodsangIOSColors {
+    var suiColor: SwiftUI.Color {
+        return SwiftUI.Color(self.color)
+    }
 }
 
 public extension UIColor {
@@ -29,6 +36,16 @@ public extension UIColor.ColorSystem {
         case error
         case check
         case focus
+        case gray1
+        case gray2
+        case gray3
+        case gray4
+        case gray5
+        case gray6
+        case gray7
+        case gray8
+        case gray9
+        case background
     }
 }
 
@@ -58,6 +75,26 @@ public extension UIColor.ColorSystem.Color {
             return GodsangIOSAsset.Color.check.color
         case .focus:
             return GodsangIOSAsset.Color.focus.color
+        case .gray1:
+            return GodsangIOSAsset.Color.gray1.color
+        case .gray2:
+            return GodsangIOSAsset.Color.gray2.color
+        case .gray3:
+            return GodsangIOSAsset.Color.gray3.color
+        case .gray4:
+            return GodsangIOSAsset.Color.gray4.color
+        case .gray5:
+            return GodsangIOSAsset.Color.gray5.color
+        case .gray6:
+            return GodsangIOSAsset.Color.gray6.color
+        case .gray7:
+            return GodsangIOSAsset.Color.gray7.color
+        case .gray8:
+            return GodsangIOSAsset.Color.gray8.color
+        case .gray9:
+            return GodsangIOSAsset.Color.gray9.color
+        case .background:
+            return GodsangIOSAsset.Color.background.color
         }
     }
 }
