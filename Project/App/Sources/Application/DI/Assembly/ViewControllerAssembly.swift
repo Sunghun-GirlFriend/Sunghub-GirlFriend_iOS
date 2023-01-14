@@ -20,6 +20,9 @@ final class ViewControllerAssembly: Assembly {
                 $0.register(MyPageViewController.self) {
                     MyPageViewController(reactor: $0.resolve(MyPageReactor.self)!)
                 }
+                $0.register(QuestSelectViewController.self) {
+                    QuestSelectViewController(reactor: $0.resolve(QuestSelectReactor.self)!)
+                }
             }
             .buildNoReture
         container

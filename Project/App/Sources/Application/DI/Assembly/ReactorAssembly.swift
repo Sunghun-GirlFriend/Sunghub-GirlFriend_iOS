@@ -20,6 +20,9 @@ final class ReactorAssembly: Assembly {
                 $0.register(MyPageReactor.self) { _ in
                     MyPageReactor()
                 }
+                $0.register(QuestSelectReactor.self) { _ in
+                    QuestSelectReactor()
+                }
             }
             .buildNoReture
         container

@@ -39,8 +39,11 @@ final class HomeViewController: BaseViewController<HomeReactor> {
         .rowHeight(UITableView.automaticDimension)
         .estimatedRowHeight(300)
         .sectionHeaderHeight(40)
+        .sectionFooterHeight(50)
         .with {
+            $0.tableFooterView?.isHidden = true
             $0.layer.cornerRadius = 8
+            $0.register(TableViewFooter.self, forHeaderFooterViewReuseIdentifier: TableViewFooter.identifier)
             $0.register(TableViewHeader.self, forHeaderFooterViewReuseIdentifier: TableViewHeader.identifier)
             $0.register(DontStartQuestCell.self, forCellReuseIdentifier: DontStartQuestCell.identifier)
         }
@@ -54,8 +57,10 @@ final class HomeViewController: BaseViewController<HomeReactor> {
         .rowHeight(UITableView.automaticDimension)
         .estimatedRowHeight(300)
         .sectionHeaderHeight(40)
+        .sectionFooterHeight(50)
         .with {
             $0.layer.cornerRadius = 8
+            $0.register(TableViewFooter.self, forHeaderFooterViewReuseIdentifier: TableViewFooter.identifier)
             $0.register(TableViewHeader.self, forHeaderFooterViewReuseIdentifier: TableViewHeader.identifier)
             $0.register(StopingQuestCell.self, forCellReuseIdentifier: StopingQuestCell.identifier)
         }
@@ -120,7 +125,7 @@ final class HomeViewController: BaseViewController<HomeReactor> {
         
         dontStartQuestTableView.snp.makeConstraints {
             $0.top.equalTo(questView.snp.bottom).offset(32)
-            $0.height.equalTo(200)
+            $0.height.equalTo(240)
             $0.centerX.equalToSuperview()
             $0.leading.trailing.equalToSuperview().inset(20)
             $0.bottom.equalTo(stoppingTableView.snp.top).inset(-20)
@@ -128,7 +133,7 @@ final class HomeViewController: BaseViewController<HomeReactor> {
 
         stoppingTableView.snp.makeConstraints {
             $0.leading.trailing.equalTo(dontStartQuestTableView)
-            $0.height.equalTo(200)
+            $0.height.equalTo(240)
             $0.centerX.equalToSuperview()
             $0.bottom.equalToSuperview().inset(30)
         }
@@ -172,7 +177,6 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
             cell2.bind(Dummy.shared.stoppingdata[indexPath.row])
             return cell2
         }
-        
         return UITableViewCell()
     }
     
@@ -184,6 +188,18 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         } else if tableView == stoppingTableView {
             guard let cell1 = tableView.dequeueReusableHeaderFooterView(withIdentifier: TableViewHeader.identifier) as? TableViewHeader else { return UITableViewHeaderFooterView() }
             cell1.bind(("중단한 퀘스트", Dummy.shared.stoppingdata.count))
+            return cell1
+        }
+        return UITableViewHeaderFooterView()
+    }
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if tableView == dontStartQuestTableView {
+            guard let cell1 = tableView.dequeueReusableHeaderFooterView(withIdentifier: TableViewFooter.identifier) as? TableViewFooter else { return UITableViewHeaderFooterView() }
+            cell1.bind("퀘스트 시작하기")
+            return cell1
+        } else if tableView == stoppingTableView {
+            guard let cell1 = tableView.dequeueReusableHeaderFooterView(withIdentifier: TableViewFooter.identifier) as? TableViewFooter else { return UITableViewHeaderFooterView() }
+            cell1.bind("퀘스트 재개하기")
             return cell1
         }
         return UITableViewHeaderFooterView()
