@@ -27,6 +27,8 @@ final class Signup3Flow: Flow {
         switch step {
         case .signup3IsRequired:
             return coodrinatorToSignUp3()
+        case .signinIsRequired:
+            return navigateToSignin()
         default:
             return .none
         }
@@ -36,6 +38,15 @@ final class Signup3Flow: Flow {
 extension Signup3Flow {
     func coodrinatorToSignUp3() -> FlowContributors {
         let viewController = AppDelegate.container.resolve(Signup3ViewController.self)!
+        self.rootViewController.setViewControllers([viewController], animated: true)
+        return .one(flowContributor: .contribute(
+            withNextPresentable: viewController,
+            withNextStepper: viewController.reactor!)
+        )
+    }
+
+    func navigateToSignin() -> FlowContributors {
+        let viewController = AppDelegate.container.resolve(SignInViewController.self)!
         self.rootViewController.setViewControllers([viewController], animated: true)
         return .one(flowContributor: .contribute(
             withNextPresentable: viewController,

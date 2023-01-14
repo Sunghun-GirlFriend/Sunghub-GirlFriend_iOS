@@ -234,6 +234,13 @@ final class CreateViewController: BaseViewController<CreateReactor>{
             $0.height.equalTo(48)
         }
     }
+
+    override func bindAction(reactor: CreateReactor) {
+        button.rx.tap
+            .map { Reactor.Action.buttonDidTap }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+    }
 }
 
 extension UISwitch {

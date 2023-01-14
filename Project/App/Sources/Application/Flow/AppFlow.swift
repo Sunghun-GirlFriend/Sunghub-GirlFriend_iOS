@@ -7,7 +7,7 @@ struct AppStepper: Stepper {
     let steps: PublishRelay<Step> = .init()
     private let disposeBag = DisposeBag()
     func readyToEmitSteps() {
-        steps.accept(AppStep.mainTabbarIsRequired)
+        steps.accept(AppStep.signinIsRequired)
     }
 }
 

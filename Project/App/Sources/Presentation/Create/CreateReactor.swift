@@ -11,7 +11,7 @@ final class CreateReactor: Reactor, Stepper {
 
     //MARK: - Reactor
     enum Action {
-        case loginButtonDidTap
+        case buttonDidTap
     }
 
     enum Mutation {
@@ -33,8 +33,8 @@ final class CreateReactor: Reactor, Stepper {
 extension CreateReactor {
     func mutate(action: Action) -> Observable<Mutation> {
          switch action {
-         case .loginButtonDidTap:
-             steps.accept(AppStep.mainIsRequired)
+         case .buttonDidTap:
+             steps.accept(AppStep.dismiss)
          }
         return .empty()
     }

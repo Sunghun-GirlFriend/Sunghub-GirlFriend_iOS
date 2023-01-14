@@ -11,7 +11,7 @@ final class HomeReactor: Reactor , Stepper{
 
     //MARK: - Reactor
     enum Action {
-        // actiom cases
+       case buttonAction
     }
     
     enum Mutation {
@@ -33,8 +33,11 @@ final class HomeReactor: Reactor , Stepper{
 //MARK: - Mutate
 extension HomeReactor {
     func mutate(action: Action) -> Observable<Mutation> {
-        // switch action {
-        // }
+         switch action {
+         case .buttonAction:
+             steps.accept(AppStep.createIsRequired)
+             return .empty()
+         }
     }
 }
 

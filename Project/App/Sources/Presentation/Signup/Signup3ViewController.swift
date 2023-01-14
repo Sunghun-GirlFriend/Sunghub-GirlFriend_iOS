@@ -12,7 +12,7 @@ final class Signup3ViewController: BaseViewController<SignupReactor>{
         .build
     
     override func setUp() {
-        navigationItem.title = "회원가입"
+        self.navigationItem.title = "회원가입"
     }
 
     override func addView() {

@@ -20,20 +20,10 @@ final class ReactorAssembly: Assembly {
                 $0.register(MyPageReactor.self) { _ in
                     MyPageReactor()
                 }
-            }
-            .buildNoReture
-        container
-            .builder
-            .with {
                 $0.register(CreateReactor.self) { _ in
                     CreateReactor()
                 }
-            }
-            .buildNoReture
-        container
-            .builder
-            .with {
-                $0.register(SignupReactor.self) { r in
+                $0.register(SignupReactor.self) { _ in
                     SignupReactor()
                 }
             }

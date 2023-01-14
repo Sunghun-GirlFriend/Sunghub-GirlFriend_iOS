@@ -4,6 +4,4 @@ import RxSwift
 
 final class MyPageViewController: BaseViewController<MyPageReactor> {
     
-    
-    
 }

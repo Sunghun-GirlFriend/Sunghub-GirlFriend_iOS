@@ -20,7 +20,7 @@ final class SignupViewController: BaseViewController<SignupReactor>{
         .build
     
     override func setUp() {
-        navigationController?.title = "회원가입"
+        self.navigationItem.title = "회원가입"
     }
 
     override func addView() {
@@ -35,7 +35,7 @@ final class SignupViewController: BaseViewController<SignupReactor>{
 
     override func setLayout() {
         textField1.snp.makeConstraints {
-            $0.top.equalTo(94)
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(92)
             $0.leading.right.equalToSuperview().inset(bounds.width/24.375)
             $0.height.equalTo(48)
         }

@@ -27,6 +27,8 @@ final class CreateFlow: Flow {
         switch step {
         case .createIsRequired:
             return coodrinatorToSignIn()
+        case .dismiss:
+            return dismiss()
         default:
             return .none
         }
@@ -41,6 +43,10 @@ extension CreateFlow {
             withNextPresentable: viewController,
             withNextStepper: viewController.reactor!)
         )
+    }
+    func dismiss() -> FlowContributors {
+        self.rootViewController.topViewController?.dismiss(animated: true)
+        return .none
     }
 }
 

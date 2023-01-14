@@ -146,6 +146,12 @@ final class HomeViewController: BaseViewController<HomeReactor> {
             self.questView.isHidden = true
         }
     }
+    override func bindAction(reactor: HomeReactor) {
+        addButton.rx.tap
+            .map { Reactor.Action.buttonAction }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+    }
 }
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {

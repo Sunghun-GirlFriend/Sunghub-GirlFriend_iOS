@@ -55,6 +55,7 @@ extension SignupFlow {
                    withNextStepper: viewController.reactor!)
                )
     }
+
     func navigateToSignup2() -> FlowContributors {
         let viewController = AppDelegate.container.resolve(Signup3ViewController.self)!
                self.rootViewController.pushViewController(viewController, animated: true)

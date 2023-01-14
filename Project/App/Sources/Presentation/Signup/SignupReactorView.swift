@@ -12,6 +12,7 @@ final class SignupReactor: Reactor, Stepper {
     enum Action {
         case completeButtonDidTap
         case signupButtonDidTap
+        case nextButtonDidTap
     }
     
     enum Mutation {
@@ -29,12 +30,14 @@ final class SignupReactor: Reactor, Stepper {
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
-         switch action {
-         case .completeButtonDidTap:
-             steps.accept(AppStep.signup2IsRequired)
-         case .signupButtonDidTap:
-             steps.accept(AppStep.signup3IsRequired)
-         }
+        switch action {
+        case .completeButtonDidTap:
+            steps.accept(AppStep.signup2IsRequired)
+        case .signupButtonDidTap:
+            steps.accept(AppStep.signup3IsRequired)
+        case .nextButtonDidTap:
+            steps.accept(AppStep.signinIsRequired)
+        }
         return .empty()
     }
     

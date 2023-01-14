@@ -20,35 +20,15 @@ final class ViewControllerAssembly: Assembly {
                 $0.register(MyPageViewController.self) {
                     MyPageViewController(reactor: $0.resolve(MyPageReactor.self)!)
                 }
-            }
-            .buildNoReture
-        container
-            .builder
-            .with {
                 $0.register(CreateViewController.self) {
                     CreateViewController(reactor: $0.resolve(CreateReactor.self)!)
                 }
-            }
-            .buildNoReture
-        container
-            .builder
-            .with {
                 $0.register(SignupViewController.self) {
                     SignupViewController(reactor: $0.resolve(SignupReactor.self)!)
                 }
-            }
-            .buildNoReture
-        container
-            .builder
-            .with {
                 $0.register(Signup2ViewController.self) {
                     Signup2ViewController(reactor: $0.resolve(SignupReactor.self)!)
                 }
-            }
-            .buildNoReture
-        container
-            .builder
-            .with {
                 $0.register(Signup3ViewController.self) {
                     Signup3ViewController(reactor: $0.resolve(SignupReactor.self)!)
                 }
