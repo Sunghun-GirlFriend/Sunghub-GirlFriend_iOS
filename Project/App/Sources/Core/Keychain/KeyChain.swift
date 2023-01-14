@@ -2,8 +2,6 @@ import Foundation
 
 public enum KeychainType: NSMutableString {
     case accessToken = "ACCESS-TOKEN"
-    case refreshToken = "REFRESH-TOKEN"
-    case expiredAt = "EXPIRED-AT"
 }
 
 public protocol Keychain {
