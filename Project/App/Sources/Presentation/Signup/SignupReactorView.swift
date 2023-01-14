@@ -1,11 +1,17 @@
 import Foundation
 import ReactorKit
 import RxSwift
+import RxRelay
+import RxFlow
 
-class SignupReactor: Reactor {
+final class SignupReactor: Reactor, Stepper {
+
+    private let disposeBag: DisposeBag = .init()
+    var steps: PublishRelay<Step> = .init()
     
     enum Action {
-        // actiom cases
+        case completeButtonDidTap
+        case signupButtonDidTap
     }
     
     enum Mutation {
@@ -23,14 +29,19 @@ class SignupReactor: Reactor {
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
-        // switch action {
-        // }
+         switch action {
+         case .completeButtonDidTap:
+             steps.accept(AppStep.signup2IsRequired)
+         case .signupButtonDidTap:
+             steps.accept(AppStep.signup3IsRequired)
+         }
+        return .empty()
     }
     
     func reduce(state: State, mutation: Mutation) -> State {
         var newState = state
-        // switch mutation {
-        // }
+         switch mutation {
+         }
         return newState
     }
     

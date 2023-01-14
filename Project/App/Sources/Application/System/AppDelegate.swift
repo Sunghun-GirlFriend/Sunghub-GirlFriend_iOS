@@ -13,7 +13,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
         dependencyManager()
-        keyboardManagerment()
+//        keyboardManagerment()
         return true
     }
 
@@ -42,4 +42,3 @@ private extension AppDelegate {
             .buildNoReture
     }
 }
-

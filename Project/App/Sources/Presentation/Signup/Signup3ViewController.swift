@@ -2,7 +2,7 @@ import UIKit
 import ReactorKit
 import RxSwift
 
-final class SignupViewController: BaseViewController<SignupReactor>{
+final class Signup3ViewController: BaseViewController<SignupReactor>{
     private let textField1 = GodsaengTextfield().builder
         .placeholder("이름을 입력해주세요")
         .build
@@ -54,14 +54,5 @@ final class SignupViewController: BaseViewController<SignupReactor>{
             $0.leading.right.equalToSuperview().inset(bounds.width/24.375)
             $0.height.equalTo(48)
         }
-    }
-
-    override func bindView(reactor: SignupReactor) {
-        button.rx.tap
-        .map {
-            Reactor.Action.completeButtonDidTap
-        }
-        .bind(to: reactor.action)
-        .disposed(by: disposeBag)
     }
 }
