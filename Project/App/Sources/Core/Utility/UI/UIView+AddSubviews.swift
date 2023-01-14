@@ -1,7 +1,8 @@
 import UIKit
 
-public extension UIView {
+extension UIView {
     func addSubViews(_ subView: UIView...) {
         subView.forEach(addSubview(_:))
     }
 }
+
