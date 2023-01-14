@@ -28,7 +28,7 @@ final class MainButton: UIButton {
     
     //MARK: - Method
     func setUI() {
-        self.isEnabled = false
+        self.isEnabled = true
         self.backgroundColor = .ColorSystem.Color.main1.color
         self.layer.cornerRadius = 8
         self.clipsToBounds = true
