@@ -30,12 +30,13 @@ final class SignInViewController: BaseViewController<SignInReactor> {
     override func setLayout() {
         icon.snp.makeConstraints {
             $0.top.equalTo(view.safeArea.top)
-            $0.height.width.equalTo(bounds.height * 0.01)
+            $0.height.equalTo(45.8)
+            $0.width.equalTo(116)
             $0.left.equalToSuperview().offset(bounds.width/24.375)
         }
         
         loginLabel.snp.makeConstraints {
-            $0.top.equalTo(icon.snp.bottom)
+            $0.top.equalTo(icon.snp.bottom).offset(28)
             $0.left.equalToSuperview().offset(bounds.width/24.375)
         }
         
