@@ -22,6 +22,7 @@ open class BaseViewController<T: Reactor>: UIViewController {
     // MARK: - LifeCycle
     public override func viewDidLoad() {
         super.viewDidLoad()
+        setBackgroundIfNot()
         setUp()
         addView()
         setLayout()
@@ -35,7 +36,12 @@ open class BaseViewController<T: Reactor>: UIViewController {
     deinit {
         print("\(type(of: self)): \(#function)")
     }
-
+    
+    private func setBackgroundIfNot() {
+        if self.view.backgroundColor == nil {
+            self.view.backgroundColor = .white
+        }
+    }
     // MARK: - Method
     open func setUp() {}
     open func addView() {}
