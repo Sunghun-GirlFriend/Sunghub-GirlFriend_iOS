@@ -13,7 +13,6 @@ final class MainButton: UIButton {
     init() {
         super.init(frame: .zero)
         setUI()
-
     }
     
     @available(*, unavailable)
@@ -33,9 +32,8 @@ final class MainButton: UIButton {
     override func layoutSubviews() {
         super.layoutSubviews()
         self.applyGradient(colors: [
-            UIColor.ColorSystem.Color.main1.color.cgColor,
-            UIColor.ColorSystem.Color.main1.color.cgColor,
-            UIColor.white.cgColor
+            UIColor.ColorSystem.Color.main5.color,
+            UIColor.ColorSystem.Color.main4.color.withAlphaComponent(0.6),
         ])
     }
 }
