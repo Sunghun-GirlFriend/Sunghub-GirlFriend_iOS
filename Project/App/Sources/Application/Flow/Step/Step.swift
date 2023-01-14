@@ -6,4 +6,5 @@ public enum AppStep: Step {
     case signinIsRequired
     case signupIsRequired
     case mainIsRequired
+    case createIsRequired
 }
