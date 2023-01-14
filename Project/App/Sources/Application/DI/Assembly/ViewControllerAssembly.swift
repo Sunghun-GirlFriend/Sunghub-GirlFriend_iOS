@@ -22,5 +22,13 @@ final class ViewControllerAssembly: Assembly {
                 }
             }
             .buildNoReture
+        container
+            .builder
+            .with {
+                $0.register(CreateViewController.self) {
+                    CreateViewController(reactor: $0.resolve(CreateReactor.self)!)
+                }
+            }
+            .buildNoReture
     }
 }
