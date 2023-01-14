@@ -11,6 +11,12 @@ final class ReactorAssembly: Assembly {
                 $0.register(HomeReactor.self) { _ in
                     HomeReactor()
                 }
+                $0.register(RankReactor.self) { _ in
+                    RankReactor()
+                }
+                $0.register(MyPageReactor.self) { _ in
+                    MyPageReactor()
+                }
             }
             .buildNoReture
     }

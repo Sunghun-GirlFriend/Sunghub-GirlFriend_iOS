@@ -25,8 +25,21 @@ final class HomeFlow: Flow {
     func navigate(to step: Step) -> FlowContributors {
         guard let step = step as? AppStep else { return .none }
         switch step {
+        case.HomeIsRequired:
+            return coordinateToHome()
         default:
             return .none
         }
+    }
+}
+
+private extension HomeFlow {
+    func coordinateToHome() -> FlowContributors {
+        let viewcontroller = AppDelegate.container.resolve(HomeViewController.self)!
+        self.rootViewController.setViewControllers([viewcontroller], animated: true)
+        return .one(flowContributor: .contribute(
+            withNextPresentable: viewcontroller,
+            withNextStepper: viewcontroller.reactor!)
+        )
     }
 }
