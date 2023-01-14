@@ -6,7 +6,7 @@ import RxFlow
 struct SignInStepper: Stepper {
     var steps: PublishRelay<Step> = .init()
     var initialStep: Step {
-        return AppStep.mainIsRequired
+        return AppStep.signinIsRequired
     }
 }
 
@@ -35,7 +35,12 @@ final class SignInFlow: Flow {
 
 extension SignInFlow {
     func coodrinatorToSignIn() -> FlowContributors {
-        return .none
+        let viewController = AppDelegate.container.resolve(SignInViewController.self)!
+        self.rootViewController.setViewControllers([viewController], animated: true)
+        return .one(flowContributor: .contribute(
+            withNextPresentable: viewController,
+            withNextStepper: viewController.reactor!)
+        )
     }
 }
 
