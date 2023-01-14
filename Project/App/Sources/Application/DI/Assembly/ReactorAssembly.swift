@@ -5,8 +5,8 @@ final class ReactorAssembly: Assembly {
         container
             .builder
             .with {
-                $0.register(OnboardingReactor.self) { _ in
-                    OnboardingReactor()
+                $0.register(SignInReactor.self) { _ in
+                    SignInReactor()
                 }
             }
             .buildNoReture

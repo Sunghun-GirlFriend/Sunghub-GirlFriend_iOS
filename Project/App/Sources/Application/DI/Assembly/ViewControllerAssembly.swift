@@ -5,8 +5,8 @@ final class ViewControllerAssembly: Assembly {
         container
             .builder
             .with {
-                $0.register(OnboardingViewController.self) {
-                    OnboardingViewController(reactor: $0.resolve(OnboardingReactor.self)!)
+                $0.register(SignInViewController.self) {
+                    SignInViewController(reactor: $0.resolve(SignInReactor.self)!)
                 }
             }
             .buildNoReture

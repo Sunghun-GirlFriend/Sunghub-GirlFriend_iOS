@@ -4,7 +4,7 @@ import RxSwift
 import RxRelay
 import RxFlow
 
-final class OnboardingReactor: Reactor , Stepper{
+final class SignInReactor: Reactor, Stepper {
     
     private let disposeBag: DisposeBag = .init()
     var steps: PublishRelay<Step> = .init()
@@ -31,7 +31,7 @@ final class OnboardingReactor: Reactor , Stepper{
 }
 
 //MARK: - Mutate
-extension OnboardingReactor {
+extension SignInReactor {
     func mutate(action: Action) -> Observable<Mutation> {
         // switch action {
         // }
@@ -39,7 +39,7 @@ extension OnboardingReactor {
 }
 
 //MARK: - reduce
-extension OnboardingReactor {
+extension SignInReactor {
     func reduce(state: State, mutation: Mutation) -> State {
         var newState = state
         // switch mutation {
