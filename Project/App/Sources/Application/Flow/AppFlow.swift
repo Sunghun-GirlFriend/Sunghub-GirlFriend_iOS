@@ -7,6 +7,7 @@ struct AppStepper: Stepper {
     let steps: PublishRelay<Step> = .init()
     private let disposeBag = DisposeBag()
     func readyToEmitSteps() {
+        steps.accept(AppStep.createIsRequired)
         steps.accept(AppStep.signupIsRequired)
     }
 }
@@ -34,6 +35,8 @@ final class AppFlow: Flow {
             return coordinateToSignIn()
         case .mainIsRequired:
             return coordinateToMain()
+        case .createIsRequired:
+            return coordinateToCreate()
         case .signupIsRequired:
             return coordinateToSignup()
         default:
@@ -80,6 +83,20 @@ extension AppFlow {
                 .contribute(
                     withNextPresentable: flow,
                     withNextStepper: OneStepper(withSingleStep: AppStep.mainIsRequired
+                )
+            )
+        )
+    }
+
+    private func coordinateToCreate() -> FlowContributors {
+        let flow = CreateFlow()
+        Flows.use(flow, when: .created) { [unowned self] root in
+            rootWindow.rootViewController = root
+        }
+        return .one(flowContributor:
+                .contribute(
+                    withNextPresentable: flow,
+                    withNextStepper: OneStepper(withSingleStep: AppStep.createIsRequired
                 )
             )
         )

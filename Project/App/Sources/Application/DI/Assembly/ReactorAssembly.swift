@@ -13,6 +13,14 @@ final class ReactorAssembly: Assembly {
         container
             .builder
             .with {
+                $0.register(CreateReactor.self) { _ in
+                    CreateReactor()
+                }
+            }
+            .buildNoReture
+        container
+            .builder
+            .with {
                 $0.register(SignupReactor.self) { r in
                     SignupReactor()
                 }
